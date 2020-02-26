@@ -29,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(_('name'), max_length=50, blank=True)
     first_name = models.CharField(_('first name'), max_length=50, blank=True)
     last_name = models.CharField(_('last name'), max_length=50, blank=True)
-    email = models.EmailField(_('email address'), max_length=50, unique=True)
+    email = models.EmailField(_('email address'), max_length=50, unique=False, blank=True)
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -51,13 +51,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=False
     )
     is_phone_number_verified = models.BooleanField(_('phone number verified'), default=False)
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now, blank=True)
     bio = models.CharField(_('biograghy'), max_length=3000, blank=True)
     balance = models.IntegerField(default=Constants.USER_INITIAL_BALANCE)
     rate = models.IntegerField(default=0)
-    location = models.PointField(null=True)
+    last_location = models.PointField(null=True)
     gender = models.CharField(blank=True, choices=GENDER_CHOICES, max_length=10)
     status_code = models.IntegerField(default=0)
+    age = models.IntegerField(default=0)
+    birthday = models.DateTimeField(_('Birth Day'), null=True, blank=True)
 
     objects = UserManager()
 
