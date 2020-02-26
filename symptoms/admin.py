@@ -1,3 +1,7 @@
 from django.contrib import admin
+from symptoms.models.questions import Question, QuestionDetail, QuestionOption
 
-# Register your models here.
+
+admin.site.register(Question)
+admin.site.register(QuestionOption)
+admin.site.register(QuestionDetail)

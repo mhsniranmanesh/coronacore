@@ -3,17 +3,25 @@ from profiles.models.user import User
 from profiles.validators.userValidators import PhoneNumberValidator
 
 
+class CreateUserSerializer(serializers.ModelSerializer):
+    phone_number = serializers.CharField(max_length=30, required=True, validators=[PhoneNumberValidator()])
+
+    class Meta:
+        model = User
+        fields = ('name', 'phone_number')
+
+
+class UserUpdateInfosSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('name', 'gender', 'status_code', 'age')
+
+
 # class UserEmailActivationSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = User
 #         fields = ('username')
-
-
-class CreateUserSerializer(serializers.ModelSerializer):
-    phone_number = serializers.CharField(max_length=30, required=True, validators=[PhoneNumberValidator()])
-    class Meta:
-        model = User
-        fields = ('name', 'phone_number')
 
 
 # class UserGetPublicInfosSerializer(serializers.ModelSerializer):
@@ -30,11 +38,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
 #
 #     class Meta:
 #         model = User
-#         fields = ('username', 'first_name', 'last_name', 'email', 'uuid', 'is_active', 'phone_number', 'title', 'bio', 'date_joined', 'profile_picture', 'avatar',
-#                   'freelancer_rate', 'client_rate', 'university', 'balance')
-
-
-class UserUpdateInfosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('name', 'gender', 'status_code', 'age')
+#         fields = ('username', 'first_name', 'last_name', 'email', 'uuid', 'is_active', 'phone_number', 'title', 'bio',
+#                   'date_joined', 'profile_picture', 'avatar', 'freelancer_rate', 'client_rate', 'university',
+#                   'balance')

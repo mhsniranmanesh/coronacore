@@ -20,8 +20,8 @@ class UserCreateView(CreateAPIView):
             try:
                 user = User(
                     username=serializer.validated_data['phone_number'],
-                    name = serializer.validated_data['name'],
-                    phone_number = serializer.validated_data['phone_number'],
+                    name=serializer.validated_data['name'],
+                    phone_number=serializer.validated_data['phone_number'],
                 )
                 password = create_user_random_password()
                 user.set_password(password)
@@ -35,7 +35,8 @@ class UserCreateView(CreateAPIView):
                     status=status.HTTP_200_OK
                 )
             except IntegrityError:
-                return Response(data={'phone_number': ['User with this phone number already exists']}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(data={'phone_number': ['User with this phone number already exists']},
+                                status=status.HTTP_400_BAD_REQUEST)
             except Exception as e:
                 print(e)
                 return Response(data={'message': 'something went wrong'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

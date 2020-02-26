@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^api/v1/locations/', include('locations.urls')),
     url(r'^api/v1/profiles/', include('profiles.urls')),
     url(r'^api/v1/connections/', include('connections.urls')),
+    url(r'^api/v1/symptoms/', include('symptoms.urls')),
     url(r'^api/v1/auth/', include('authentication.urls')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'authentication',
     'locations',
     'connections',
+    'symptoms',
 ]
 
 MIDDLEWARE = [
