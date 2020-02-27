@@ -19,7 +19,6 @@ class ConnectionsAddContact(APIView):
                     return Response(data={'message': 'maximum acceptable batch size is 100'},
                                     status=status.HTTP_400_BAD_REQUEST)
                 for contact in serializer.validated_data:
-                    print(contact.keys())
                     if 'name' in contact.keys() and 'phone_number' in contact.keys():
                         name = contact['name']
                         phone_number = contact['phone_number']
