@@ -23,7 +23,7 @@ class Connection(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
     self_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='self_user_connection', blank=False)
     other_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='other_user_connection', blank=False)
-    type = models.IntegerField(choices=CONNECTION_TYPE_CHOICES, blank=False, null=False)
+    connection_type = models.IntegerField(choices=CONNECTION_TYPE_CHOICES, blank=False, null=False)
 
 
 class ConnectionRequest(models.Model):
@@ -35,5 +35,6 @@ class ConnectionRequest(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='connection_request_user', blank=False)
     phone_number = models.CharField(blank=False, null=False, max_length=50)
-    type = models.IntegerField(choices=CONNECTION_TYPE_CHOICES, blank=False, null=False)
+    name = models.CharField(blank=True, null=True, max_length=50)
+    connection_type = models.IntegerField(choices=CONNECTION_TYPE_CHOICES, blank=False, null=False)
     is_connected = models.BooleanField(default=False, blank=False, null=False)

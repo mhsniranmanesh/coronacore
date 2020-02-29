@@ -14,14 +14,14 @@ class ConnectionsAddContactSerializer(serializers.ModelSerializer):
 class ConnectionsRequestConnectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ConnectionRequest
-        fields = ('phone_number', 'type')
+        fields = ('phone_number', 'name', 'connection_type')
 
 
 class GetUserConnectionRequestsSerializer(serializers.ModelSerializer):
     user = GetUserInfosForConnectionsSerializer()
     class Meta:
         model = ConnectionRequest
-        fields = ('user', 'type', 'is_connected')
+        fields = ('user', 'connection_type', 'is_connected')
 
 
 class ConnectionsAcceptConnectionSerializer(serializers.ModelSerializer):
