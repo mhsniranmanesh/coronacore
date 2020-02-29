@@ -18,6 +18,13 @@ class UserUpdateInfosSerializer(serializers.ModelSerializer):
         fields = ('name', 'gender', 'status_code', 'age')
 
 
+class GetUserInfosForConnectionsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('name', 'phone_number', 'status_code')
+
+
 # class UserEmailActivationSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = User
