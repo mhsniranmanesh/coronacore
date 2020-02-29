@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'locations',
     'connections',
     'symptoms',
+    'news',
 ]
 
 MIDDLEWARE = [

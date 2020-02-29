@@ -34,11 +34,12 @@ def make_connection_requests_live(user):
     for connection_request in connection_requests:
         try:
             self_user = connection_request.user
-            connection = Connection(self_user=self_user, target_user=target_user,
-                                    connection_type=connection_request.connection_type)
-            connection.save()
-            connection_request.is_connected = True
-            connection_request.save()
+            if not Connection.objects.filter(self_user=self_user, target_user=target_user).exists():
+                connection = Connection(self_user=self_user, target_user=target_user,
+                                        connection_type=connection_request.connection_type)
+                connection.save()
+                connection_request.is_connected = True
+                connection_request.save()
         except Exception as e:
             continue
 
