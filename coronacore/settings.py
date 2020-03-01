@@ -17,9 +17,9 @@ from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = ['157.230.113.65', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-KAVENEGAR_API_KEY = '316249736A4D662B556D58676250314B497146656F413D3D'
+KAVENEGAR_API_KEY = '5335696668626E75784D59365838474868543137754D31684B56617964467A67'
 # Application definition
 SEND_SMS = False
 
@@ -32,8 +32,9 @@ SECRET_KEY = '2k5%)7k$d37#8z3#v@z@cj)v6dv_sxl7nnk^i7jk@h)v^*9u%1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+#PAY_IR_API_KEY = '4d5dc40b212b4168b15d3c744fbc9bf2'
+PAY_IR_API_KEY = 'test'
+PAY_IR_REDIRECT_ADDRESS = '127.0.0.1:8080/api/v1/payments/transaction/verify/'
 
 # Application definition
 
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'connections',
     'symptoms',
     'news',
+    'payments',
 ]
 
 MIDDLEWARE = [
